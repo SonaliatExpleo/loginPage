@@ -1,0 +1,107 @@
+[
+    {
+        "id": "sd_YsyfjvggBXJgUYyR",
+        "type": "tab",
+        "createdDate": "2024-05-03T09:07:21.837Z",
+        "label": "bookedEvents",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "bookedEventsComponent"
+    },
+    {
+        "id": "sd_1ezfsBE4ke3XSo0u",
+        "type": "OnInit",
+        "z": "sd_YsyfjvggBXJgUYyR",
+        "viewType": "common",
+        "nodeType": "start",
+        "name": "",
+        "functionName": "sd_1ezfsBE4ke3XSo0u",
+        "category": "Lifecycle Events",
+        "x": 30,
+        "y": 30,
+        "wires": [
+            [
+                "sd_96htzDtgiWHMDbfo"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "bookedEventsComponent"
+    },
+    {
+        "id": "sd_bDKMVrIJxkFmS1s5",
+        "type": "PageVariables",
+        "z": "sd_YsyfjvggBXJgUYyR",
+        "viewType": "pages",
+        "nodeType": "flow",
+        "name": "",
+        "inputs": 1,
+        "outputs": 1,
+        "operation": "set",
+        "globalVariables": [],
+        "functionName": "sd_bDKMVrIJxkFmS1s5",
+        "category": "Function",
+        "x": 225,
+        "y": 80,
+        "wires": [
+            [
+                "sd_ZyPaI4PZ9IpRBv0h"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "bookedEventsComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_96htzDtgiWHMDbfo",
+        "type": "GetDialogData",
+        "z": "sd_YsyfjvggBXJgUYyR",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "dialogDataMapping": "this.page.visitorUser",
+        "functionName": "sd_96htzDtgiWHMDbfo",
+        "category": "Dialog",
+        "x": 105,
+        "y": 80,
+        "wires": [
+            [
+                "sd_bDKMVrIJxkFmS1s5"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "dialogDataMapping": {
+                "type": "this.page",
+                "value": "visitorUser",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "bookedEventsComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_ZyPaI4PZ9IpRBv0h",
+        "type": "Script",
+        "z": "sd_YsyfjvggBXJgUYyR",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "\npage.myevents =[]\n\n\nlet adminData = JSON.parse(localStorage.getItem('admin'));\nconsole.log(page.visitorUser)\n\nif (Array.isArray(adminData)) {\n \n    adminData.forEach(adminItem => {\n       \n        if (adminItem.events && Array.isArray(adminItem.events)) {\n        \n            page.myevents.push(...adminItem.events);\n        }\n    });\n}\n\n\npage.allEventsBookedByMe = []\npage.myevents.forEach(events=>{\n    if(events.bookeBy.includes(page.visitorUser.email)){\n        page.allEventsBookedByMe.push(events)\n    }\n})\n\n\n",
+        "functionName": "sd_ZyPaI4PZ9IpRBv0h",
+        "category": "Function",
+        "x": 360,
+        "y": 80,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "bookedEventsComponent",
+        "generated": true
+    }
+]

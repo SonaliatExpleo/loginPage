@@ -1,0 +1,29 @@
+<div fxLayout="column wrap" style="backgroundColor:rgba(215, 129, 173, 0.8);borderRadius:15px;height:60vh;color:white;" fxLayoutAlign="start stretch" [fxShow]="true">
+  <div fxLayout="row wrap" fxLayoutAlign="center stretch" [fxShow]="true">
+    <div>
+      <h1>Update</h1>
+    </div>
+  </div>
+  <form [formGroup]="page.updateData">
+    <div fxLayout="column wrap" style="text-align:center;width:40vh;" fxLayoutAlign="center center" [fxShow]="true">
+      <mat-form-field [appearance]="&apos;legacy&apos;" [floatLabel]="&apos;auto&apos;" [hideRequiredMarker]="false">
+        <input matInput placeholder="event name" [required]="false" formControlName="eventName">
+
+      </mat-form-field>
+      <mat-form-field [appearance]="&apos;legacy&apos;" [floatLabel]="&apos;auto&apos;" [hideRequiredMarker]="false">
+        <input matInput placeholder="Input" [required]="false" formControlName="location">
+
+      </mat-form-field><mat-form-field [floatLabel]="&apos;auto&apos;">
+        <mat-label></mat-label>
+        <textarea matInput formControlName="description" placeholder="Text Area" [required]="false"></textarea>
+      </mat-form-field>
+      <mat-form-field [appearance]="&apos;legacy&apos;">
+        <mat-label></mat-label>
+        <input matInput placeholder="Date Picker" [matDatepicker]="picker" formControlName="date" [required]="false" [disabled]="false">
+        <mat-datepicker-toggle matSuffix [for]="picker" disabled="false"></mat-datepicker-toggle>
+        <mat-datepicker #picker [disabled]="false"></mat-datepicker>
+
+      </mat-form-field><button mat-raised-button style="backgroundColor:rgba(233, 208, 221, 0.8);" (click)="update()">Update</button>
+    </div>
+  </form>
+</div>

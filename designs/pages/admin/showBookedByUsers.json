@@ -1,0 +1,85 @@
+[
+    {
+        "id": "sd_kG441h3aobNEmmc7",
+        "type": "tab",
+        "createdDate": "2024-05-03T12:41:38.158Z",
+        "label": "showBookedByUsers",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "showBookedByUsersComponent"
+    },
+    {
+        "id": "sd_UGxHPNmVat7I8SN0",
+        "type": "OnInit",
+        "z": "sd_kG441h3aobNEmmc7",
+        "viewType": "common",
+        "nodeType": "start",
+        "name": "",
+        "functionName": "sd_UGxHPNmVat7I8SN0",
+        "category": "Lifecycle Events",
+        "x": 30,
+        "y": 30,
+        "wires": [
+            [
+                "sd_u7zqcMn8T3BbszbE"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "showBookedByUsersComponent"
+    },
+    {
+        "id": "sd_UJiWmLx2QfDv4nBL",
+        "type": "PageVariables",
+        "z": "sd_kG441h3aobNEmmc7",
+        "viewType": "pages",
+        "nodeType": "flow",
+        "name": "",
+        "inputs": 1,
+        "outputs": 1,
+        "operation": "set",
+        "globalVariables": [],
+        "functionName": "sd_UJiWmLx2QfDv4nBL",
+        "category": "Function",
+        "x": 180,
+        "y": 30,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "showBookedByUsersComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_u7zqcMn8T3BbszbE",
+        "type": "GetDialogData",
+        "z": "sd_kG441h3aobNEmmc7",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "dialogDataMapping": "this.page.dialogData",
+        "functionName": "sd_u7zqcMn8T3BbszbE",
+        "category": "Dialog",
+        "x": 100,
+        "y": 40,
+        "wires": [
+            [
+                "sd_UJiWmLx2QfDv4nBL"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "dialogDataMapping": {
+                "type": "this.page",
+                "value": "dialogData",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "showBookedByUsersComponent",
+        "generated": true
+    }
+]

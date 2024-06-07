@@ -1,0 +1,29 @@
+<div fxLayout="column wrap" style="background-color:rgba(156, 13, 87, 0.8);" fxLayoutAlign="center center" [fxShow]="true" fxFill>
+  <form [formGroup]="page.eventForm">
+    <div fxLayout="row wrap" style="background-color:white;" fxLayoutAlign="start stretch" [fxShow]="true">
+      <div fxLayout="column wrap" style="text-align:center;padding:2rem;" fxLayoutAlign="start stretch" [fxShow]="true">
+        <div>
+          <h3>Create Event</h3>
+        </div>
+        <mat-form-field [appearance]="&apos;legacy&apos;" [floatLabel]="&apos;auto&apos;" [hideRequiredMarker]="false">
+          <input matInput placeholder="Event Name" [required]="false" formControlName="eventName">
+
+        </mat-form-field>
+        <mat-form-field [appearance]="&apos;legacy&apos;" [floatLabel]="&apos;auto&apos;" [hideRequiredMarker]="false">
+          <input matInput placeholder="Location" [required]="false" formControlName="location">
+
+        </mat-form-field>
+        <mat-form-field [appearance]="&apos;legacy&apos;">
+          <mat-label></mat-label>
+          <input matInput placeholder="Date Picker" [matDatepicker]="picker" formControlName="date" [required]="false" [disabled]="false">
+          <mat-datepicker-toggle matSuffix [for]="picker" disabled="false"></mat-datepicker-toggle>
+          <mat-datepicker #picker [disabled]="false"></mat-datepicker>
+
+        </mat-form-field><mat-form-field [floatLabel]="&apos;auto&apos;">
+          <mat-label></mat-label>
+          <textarea matInput formControlName="description" placeholder="Desprition" [required]="false"></textarea>
+        </mat-form-field><button mat-raised-button style="background-color:rgba(184, 39, 114, 0.8);" (click)="onCreateEvent()">Create</button><button mat-raised-button style="margin-top:10px;background-color:rgba(184, 39, 114, 0.8)" routerLink="/admin">go to homepage</button>
+      </div><img imgSrc="/Web/dj.jpg" style="height:500px; margin:10px;border-radius:15px;">
+    </div>
+  </form>
+</div>

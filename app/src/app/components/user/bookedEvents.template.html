@@ -1,0 +1,13 @@
+<div fxLayout="column wrap" fxLayoutGap="20px" fxLayoutAlign="start stretch" [fxShow]="true">
+  <div fxLayout="row wrap" fxLayoutAlign="start stretch" [fxShow]="true"><button mat-raised-button style="  display: inline-block;   padding: 10px 20px;   font-size: 16px;   font-weight: bold;   text-align: center;   text-decoration: none;   cursor: pointer;   border: 2px solid #4CAF50;   color: #ffffff;   background-color: #4CAF50;   border-radius: 5px;" routerLink="/mainhome">Book Events</button></div><mat-card *ngFor="let value of page.allEventsBookedByMe;" style="height:20vh;width:20vw;text-align:center;background-color:rgba(217, 94, 157, 0.8);color:white;">
+    <mat-card-title>{{value.eventName}}</mat-card-title>
+
+    <mat-card-subtitle>{{value.location}}</mat-card-subtitle>
+
+    <mat-card-actions></mat-card-actions>
+
+    <mat-card-title>{{value.location}}</mat-card-title>
+
+    <mat-card-title>{{value.date | date}}</mat-card-title>
+  </mat-card>
+</div>

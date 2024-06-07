@@ -1,0 +1,71 @@
+<div fxLayout="column wrap" fxLayoutAlign="start stretch" [fxShow]="true">
+  <div fxLayout="row wrap" style="text-align:center; background-color:rgba(234, 0, 121, 0.8);color:white;" fxLayoutAlign="space-between center" [fxShow]="true">
+    <div>
+      <h1>{{page.user.email}}</h1>
+    </div><button mat-raised-button (click)="onSignout()">Sign out</button>
+  </div><button mat-raised-button style="width:100px;background-color:rgba(124, 36, 82, 0.8);margin-top:20px;margin-left:50px;" routerLink="/createevent">create event</button>
+  <div fxLayout="row wrap" fxLayoutAlign="start stretch" [fxShow]="true">
+    <div fxLayout="column" style="background:orange:height:100%;width:100%;">
+
+      <div fxLayout="row" fxLayoutAlign="end">
+        <div fxLayout="column" fxFlex="end">
+          <mat-form-field fxFlex="100">
+            <input matInput (keyup)="onFilter_3($event)" placeholder="Search">
+          </mat-form-field>
+        </div>
+      </div>
+      <table mat-table [dataSource]="page?.tableData" class="table-width-fix">
+        <tr mat-header-row *matHeaderRowDef="[&apos;eventName&apos;,&apos;location&apos;,&apos;date|date&apos;,&apos;description&apos;,&apos;30a395e7-cf36-8e9f-4166-1f604879cc09&apos;,&apos;4fb49552-c230-5fed-38f6-cd46a74a354a&apos;,&apos;bookeBy.length&apos;,&apos;8efadbca-6923-c7d3-98c6-54a64a48d8e7&apos;]"></tr>
+        <tr mat-row *matRowDef="let row; columns: [&apos;eventName&apos;,&apos;location&apos;,&apos;date|date&apos;,&apos;description&apos;,&apos;30a395e7-cf36-8e9f-4166-1f604879cc09&apos;,&apos;4fb49552-c230-5fed-38f6-cd46a74a354a&apos;,&apos;bookeBy.length&apos;,&apos;8efadbca-6923-c7d3-98c6-54a64a48d8e7&apos;];"></tr>
+
+        <ng-container matColumnDef="eventName">
+          <th mat-header-cell *matHeaderCellDef>Event Name</th>
+          <td mat-cell *matCellDef="let table; let i = index;">{{table.eventName}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="location">
+          <th mat-header-cell *matHeaderCellDef>Location</th>
+          <td mat-cell *matCellDef="let table; let i = index;">{{table.location}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="date|date">
+          <th mat-header-cell *matHeaderCellDef>Date</th>
+          <td mat-cell *matCellDef="let table; let i = index;">{{table.date|date}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+          <th mat-header-cell *matHeaderCellDef>Description</th>
+          <td mat-cell *matCellDef="let table; let i = index;">{{table.description}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="30a395e7-cf36-8e9f-4166-1f604879cc09">
+          <th mat-header-cell *matHeaderCellDef>Delete Events</th>
+          <td mat-cell *matCellDef="let table; let i = index;"><mat-icon (click)="deleteEvent(table.eventName)">delete</mat-icon></td>
+        </ng-container>
+
+        <ng-container matColumnDef="4fb49552-c230-5fed-38f6-cd46a74a354a">
+          <th mat-header-cell *matHeaderCellDef>Edit</th>
+          <td mat-cell *matCellDef="let table; let i = index;"><mat-icon (click)="updateEvent(table)">edit</mat-icon></td>
+        </ng-container>
+
+        <ng-container matColumnDef="bookeBy.length">
+          <th mat-header-cell *matHeaderCellDef>Booked Number</th>
+          <td mat-cell *matCellDef="let table; let i = index;">{{table.bookeBy.length}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="8efadbca-6923-c7d3-98c6-54a64a48d8e7">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let table; let i = index;"><button mat-raised-button style="color:rgba(129, 31, 81, 0.8);border:1px solid red;" (click)="showBookedUser(table.bookeBy)">view booked users</button></td>
+        </ng-container>
+      </table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]">
+      </mat-paginator>
+
+    </div>
+  </div>
+  <div fxLayout="row wrap" fxLayoutAlign="center center" [fxShow]="true" *ngIf="!page.myEvents.length">
+    <div>
+      <h1>No Events</h1>
+    </div>
+  </div>
+</div>

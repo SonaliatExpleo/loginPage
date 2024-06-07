@@ -1,0 +1,240 @@
+[
+    {
+        "id": "sd_cfeoSmCrp2KIY5Ko",
+        "type": "tab",
+        "createdDate": "2024-05-02T16:11:15.089Z",
+        "label": "updateEvent",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "updateEventComponent"
+    },
+    {
+        "id": "sd_38sh2wQvxW5SkDd6",
+        "type": "OnInit",
+        "z": "sd_cfeoSmCrp2KIY5Ko",
+        "viewType": "common",
+        "nodeType": "start",
+        "name": "",
+        "inputVariables": [],
+        "localVariables": [],
+        "outputVariables": [],
+        "pageVariables": [],
+        "functionName": "sd_38sh2wQvxW5SkDd6",
+        "category": "Lifecycle Events",
+        "x": 45,
+        "y": 140,
+        "wires": [
+            [
+                "sd_yY8dP0k6SKtFl9lp"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "updateEventComponent"
+    },
+    {
+        "id": "sd_lhpigTV9yfkLhqkN",
+        "type": "PageVariables",
+        "z": "sd_cfeoSmCrp2KIY5Ko",
+        "viewType": "pages",
+        "nodeType": "flow",
+        "name": "",
+        "inputs": 1,
+        "outputs": 1,
+        "operation": "set",
+        "globalVariables": [],
+        "functionName": "sd_lhpigTV9yfkLhqkN",
+        "category": "Function",
+        "x": 325,
+        "y": 140,
+        "wires": [
+            [
+                "sd_Tr61aIodnyv11Qqj"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "updateEventComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_Tr61aIodnyv11Qqj",
+        "type": "Script",
+        "z": "sd_cfeoSmCrp2KIY5Ko",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "\n\npage.eventtoChange = page.modalData.eventName\npage.updateData = new FormGroup({\n    eventName: new FormControl(page.modalData.eventName, { validators: [Validators.required] }),\n    location: new FormControl(page.modalData.location, { validators: [Validators.required] }),\n    date: new FormControl(page.modalData.date, { validators: [Validators.required] }),\n    description: new FormControl(page.modalData.description, { validators: [Validators.required] })\n})\n",
+        "functionName": "sd_Tr61aIodnyv11Qqj",
+        "category": "Function",
+        "x": 465,
+        "y": 140,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "updateEventComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_EAMgXry4VNLTaAYr",
+        "type": "GetDialogData",
+        "z": "sd_cfeoSmCrp2KIY5Ko",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "dialogDataMapping": "this.page.modalData",
+        "functionName": "sd_EAMgXry4VNLTaAYr",
+        "category": "Dialog",
+        "x": 225,
+        "y": 140,
+        "wires": [
+            [
+                "sd_lhpigTV9yfkLhqkN"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "dialogDataMapping": {
+                "type": "this.page",
+                "value": "modalData",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "updateEventComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_yY8dP0k6SKtFl9lp",
+        "type": "UseDependency",
+        "z": "sd_cfeoSmCrp2KIY5Ko",
+        "viewType": "client-pages",
+        "nodeType": "flow",
+        "name": "",
+        "inputs": 1,
+        "outputs": 1,
+        "property": "",
+        "propertyType": "bh",
+        "propertyGv": "bh.",
+        "alias": "",
+        "modules": [
+            {
+                "textIp": "FormControl",
+                "typedIpValue": {
+                    "type": "this.page",
+                    "value": ""
+                },
+                "injectable": false
+            },
+            {
+                "textIp": "Validators",
+                "typedIpValue": {
+                    "type": "this.page",
+                    "value": ""
+                },
+                "injectable": false
+            },
+            {
+                "textIp": "FormGroup",
+                "typedIpValue": {
+                    "type": "this.page",
+                    "value": ""
+                },
+                "injectable": false
+            }
+        ],
+        "import_all": false,
+        "library": "@angular/forms",
+        "serviceDesignerType": "pages",
+        "functionName": "sd_yY8dP0k6SKtFl9lp",
+        "category": "Function",
+        "x": 125,
+        "y": 140,
+        "wires": [
+            [
+                "sd_EAMgXry4VNLTaAYr"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "updateEventComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_0Gl9IWRY41ftdDfP",
+        "type": "PageStart",
+        "z": "sd_cfeoSmCrp2KIY5Ko",
+        "viewType": "pages",
+        "nodeType": "start",
+        "name": "Update",
+        "outputs": 1,
+        "inputVariables": [],
+        "localVariables": [],
+        "flow_type": "sync",
+        "functionName": "update",
+        "category": "General",
+        "x": 40,
+        "y": 280,
+        "wires": [
+            [
+                "sd_6MIh68tLTlI6Iy5J"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "updateEventComponent"
+    },
+    {
+        "id": "sd_6MIh68tLTlI6Iy5J",
+        "type": "Script",
+        "z": "sd_cfeoSmCrp2KIY5Ko",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "console.log(page.updateData.value,'update')\n\nlet data = JSON.parse(localStorage.getItem('admin'))\nlet user = JSON.parse(localStorage.getItem('user'))\n\ndata.forEach(admin => {\n    admin.events.forEach(events => {\n        if (events.eventName == page.eventtoChange) {\n            console.log(events,\"eventmatch\")\n            console.log(events.eventName,page.updateData.value.eventName)\n            events.location = page.updateData.value.location,\n                events.descrition = page.updateData.value.descrition,\n                events.date = page.updateData.value.date,\n                events.eventName = page.updateData.value.eventName\n\n        }\n    })\n})\nconsole.log(data)\nlocalStorage.setItem('admin', JSON.stringify(data));",
+        "functionName": "sd_6MIh68tLTlI6Iy5J",
+        "category": "Function",
+        "x": 160,
+        "y": 300,
+        "wires": [
+            [
+                "sd_xzpJL2jE0LypXZyz"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "updateEventComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_xzpJL2jE0LypXZyz",
+        "type": "CloseDialog",
+        "z": "sd_cfeoSmCrp2KIY5Ko",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "data": "this.page.eventtoChange",
+        "functionName": "sd_xzpJL2jE0LypXZyz",
+        "category": "Dialog",
+        "x": 260,
+        "y": 300,
+        "wires": [
+            []
+        ],
+        "__ssdTypeInputs__": {
+            "data": {
+                "type": "this.page",
+                "value": "eventtoChange",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "updateEventComponent",
+        "generated": true
+    }
+]

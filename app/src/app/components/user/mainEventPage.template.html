@@ -1,0 +1,29 @@
+<div fxLayout="column wrap" fxLayoutAlign="start stretch" [fxShow]="true">
+  <div fxLayout="row wrap" style="text-align:center;backgroundColor:rgba(144, 9, 79, 0.8);color:white;" fxLayoutAlign="space-between center" [fxShow]="true">
+    <div>
+      <h2>All Events</h2>
+    </div>
+    <div fxLayout="row wrap" fxLayoutGap="20px;" fxLayoutAlign="start stretch" [fxShow]="true"><button mat-raised-button style="margin-right:10px;" (click)="getBookedevents()">My Booked Events</button><button mat-raised-button (click)="signout()">Sign out</button></div>
+  </div>
+  <div fxLayout="row wrap" style="height:10vh;" fxLayoutGap="30px" fxLayoutAlign="center center" [fxShow]="true">
+    <mat-form-field [appearance]="&apos;legacy&apos;" [floatLabel]="&apos;auto&apos;" [hideRequiredMarker]="false">
+      <input matInput [(ngModel)]="page.search" placeholder="Input" [required]="false">
+
+    </mat-form-field><button mat-raised-button style="background-color:pink;" (click)="search()">search</button>
+  </div>
+  <div fxLayout="row wrap" fxLayoutAlign="space-evenly center" [fxShow]="true" fxFill><mat-card *ngFor="let value of page.events" style="height:30vh;width:30vw;text-align:center;background-color:rgba(217, 94, 157, 0.8);color:white;">
+      <mat-card-title style="letter-spacing: 4px;text-transform: uppercase;font-weight: bold;">{{value.eventName}}</mat-card-title>
+
+      <mat-card-subtitle style="letter-spacing: 4px;text-transform: uppercase;font-weight: bold;">Location : {{value.location}}</mat-card-subtitle>
+
+      <mat-card-content style="letter-spacing: 4px;text-transform: uppercase;font-weight: bold;">
+        <div>
+          <span>Description : {{value.description}}</span>
+        </div>
+      </mat-card-content>
+
+      <mat-card-subtitle style="letter-spacing: 4px;text-transform: uppercase;font-weight: bold;">Date : {{value.date | date}}</mat-card-subtitle>
+
+      <mat-card-actions><button mat-raised-button *ngIf="!value.bookeBy.includes(page.visitorUser.email)" (click)="bookticket(value)">Book Event</button><button mat-button style="backgroundColor:rgba(182, 217, 156, 0.8)" *ngIf="value.bookeBy.includes(page.visitorUser.email)">Already booked</button></mat-card-actions>
+    </mat-card></div>
+</div>

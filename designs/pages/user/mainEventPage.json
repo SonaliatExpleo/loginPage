@@ -1,0 +1,585 @@
+[
+    {
+        "id": "sd_ngbdawyitK6OcDZi",
+        "type": "tab",
+        "createdDate": "2024-05-02T12:21:39.743Z",
+        "label": "mainEventPage",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "mainEventPageComponent"
+    },
+    {
+        "id": "sd_wkAENryNoqul8Cob",
+        "type": "OnInit",
+        "z": "sd_ngbdawyitK6OcDZi",
+        "viewType": "common",
+        "nodeType": "start",
+        "name": "",
+        "functionName": "sd_wkAENryNoqul8Cob",
+        "category": "Lifecycle Events",
+        "x": 45,
+        "y": 60,
+        "wires": [
+            [
+                "sd_LXKiOmM2HgP0oUEI"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "mainEventPageComponent"
+    },
+    {
+        "id": "sd_LXKiOmM2HgP0oUEI",
+        "type": "PageVariables",
+        "z": "sd_ngbdawyitK6OcDZi",
+        "viewType": "pages",
+        "nodeType": "flow",
+        "name": "",
+        "inputs": 1,
+        "outputs": 1,
+        "operation": "set",
+        "globalVariables": [],
+        "functionName": "sd_LXKiOmM2HgP0oUEI",
+        "category": "Function",
+        "x": 185,
+        "y": 60,
+        "wires": [
+            [
+                "sd_yEUpysnnG94STmFA"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "mainEventPageComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_yEUpysnnG94STmFA",
+        "type": "Script",
+        "z": "sd_ngbdawyitK6OcDZi",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "console.log(localStorage.getItem('admin'))\npage.events = []\npage.search = undefined ;\n\nlet adminData = JSON.parse(localStorage.getItem('admin'));\n\n\nif (Array.isArray(adminData)) {\n \n    adminData.forEach(adminItem => {\n       \n        if (adminItem.events && Array.isArray(adminItem.events)) {\n        \n            page.events.push(...adminItem.events);\n        }\n    });\n}\n\n\n\n\npage.visitorUser = JSON.parse(localStorage.getItem('visitorUser'));\n\nconsole.log(page.visitorUser)\n\n",
+        "functionName": "sd_yEUpysnnG94STmFA",
+        "category": "Function",
+        "x": 345,
+        "y": 60,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "mainEventPageComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_OVc2avPpYHGYvRvS",
+        "type": "PageStart",
+        "z": "sd_ngbdawyitK6OcDZi",
+        "viewType": "pages",
+        "nodeType": "start",
+        "name": "signout",
+        "outputs": 1,
+        "inputVariables": [],
+        "localVariables": [],
+        "flow_type": "sync",
+        "functionName": "signout",
+        "category": "General",
+        "x": 80,
+        "y": 160,
+        "wires": [
+            [
+                "sd_ip8ixQsXF31mQfWx"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "mainEventPageComponent"
+    },
+    {
+        "id": "sd_ip8ixQsXF31mQfWx",
+        "type": "Script",
+        "z": "sd_ngbdawyitK6OcDZi",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "localStorage.removeItem('visitorUser');\n\nconsole.log(localStorage.getItem('visitorUser'))\n",
+        "functionName": "sd_ip8ixQsXF31mQfWx",
+        "category": "Function",
+        "x": 200,
+        "y": 160,
+        "wires": [
+            [
+                "sd_foevTdZMWQKnTL53"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "mainEventPageComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_foevTdZMWQKnTL53",
+        "type": "Navigation",
+        "z": "sd_ngbdawyitK6OcDZi",
+        "viewType": "client-pages",
+        "nodeType": "flow",
+        "name": "",
+        "path": "/login",
+        "pathMap": "",
+        "pathparams": "",
+        "pathparamsMap": "",
+        "qparams": "",
+        "qparamsMap": "",
+        "qparamsArray": "",
+        "resultMapping": "",
+        "functionName": "sd_foevTdZMWQKnTL53",
+        "category": "Navigation",
+        "x": 360,
+        "y": 180,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "mainEventPageComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_CqnrVhaBfsUHnJ75",
+        "type": "PageStart",
+        "z": "sd_ngbdawyitK6OcDZi",
+        "viewType": "pages",
+        "nodeType": "start",
+        "name": "bookticket",
+        "outputs": 1,
+        "inputVariables": [
+            {
+                "key": "bookticketValue",
+                "defaultValue": {
+                    "type": "any",
+                    "value": ""
+                },
+                "output": false
+            }
+        ],
+        "localVariables": [],
+        "flow_type": "sync",
+        "functionName": "bookticket",
+        "category": "General",
+        "x": 125,
+        "y": 320,
+        "wires": [
+            [
+                "sd_SD1AOe3rDcbTOeJH"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "mainEventPageComponent"
+    },
+    {
+        "id": "sd_4HytPrCtpIV3InNK",
+        "type": "Script",
+        "z": "sd_ngbdawyitK6OcDZi",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "console.log(bh.input.bookticketValue);\n\nlet data = JSON.parse(localStorage.getItem('admin'));\nconsole.log(data);\n\n\nif (data) {\n    data.forEach(admin => {\n        admin.events.forEach(event => {\n            if (event.eventName === bh.input.bookticketValue.eventName) {\n                // console.log(event.bookeBy,'booked by')\n                if (event.bookeBy.includes(page.visitorUser.email)) {\n                    console.log('User already booked the event');\n                } else {\n                    event.bookeBy.push(page.visitorUser.email);\n                    console.log('User booked the event successfully');\n                }\n            }\n        });\n    });\n    localStorage.setItem('admin', JSON.stringify(data));\n    console.log(data);\n} else {\n    console.log(\"No data found in localStorage\");\n}\n\nlocalStorage.setItem('admin', JSON.stringify(data))\n",
+        "functionName": "sd_4HytPrCtpIV3InNK",
+        "category": "Function",
+        "x": 485,
+        "y": 320,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "mainEventPageComponent"
+    },
+    {
+        "id": "sd_6T5N0qZs5aoHJ6bu",
+        "type": "PageStart",
+        "z": "sd_ngbdawyitK6OcDZi",
+        "viewType": "pages",
+        "nodeType": "start",
+        "name": "search",
+        "outputs": 1,
+        "inputVariables": [],
+        "localVariables": [],
+        "flow_type": "sync",
+        "functionName": "search",
+        "category": "General",
+        "x": 85,
+        "y": 240,
+        "wires": [
+            [
+                "sd_5YFi9d1P24DxA0KE"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "mainEventPageComponent"
+    },
+    {
+        "id": "sd_5YFi9d1P24DxA0KE",
+        "type": "Script",
+        "z": "sd_ngbdawyitK6OcDZi",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "\npage.events = []\n\n\nlet adminData = JSON.parse(localStorage.getItem('admin'));\n\n\nif (Array.isArray(adminData)) {\n \n    adminData.forEach(adminItem => {\n       \n        if (adminItem.events && Array.isArray(adminItem.events)) {\n        \n            page.events.push(...adminItem.events);\n        }\n    });\n}\n\n\n\nif (page.search) {\n    console.log(page.search)\n    const regex = new RegExp(page.search, 'i');\n\n   let events = page.events.filter((value) => {\n        return regex.test(value.eventName);\n    });\n    console.log(events)\n    page.events = events\n}\n",
+        "functionName": "sd_5YFi9d1P24DxA0KE",
+        "category": "Function",
+        "x": 225,
+        "y": 240,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "mainEventPageComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_maqcpW69zaPrsJQu",
+        "type": "PageStart",
+        "z": "sd_ngbdawyitK6OcDZi",
+        "viewType": "pages",
+        "nodeType": "start",
+        "name": "getBookedevents",
+        "outputs": 1,
+        "inputVariables": [],
+        "localVariables": [],
+        "flow_type": "sync",
+        "functionName": "getBookedevents",
+        "category": "General",
+        "x": 100,
+        "y": 400,
+        "wires": [
+            [
+                "sd_w21oEOf7ryvTT1EK"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "mainEventPageComponent"
+    },
+    {
+        "id": "sd_w21oEOf7ryvTT1EK",
+        "type": "OpenDialog",
+        "z": "sd_ngbdawyitK6OcDZi",
+        "viewType": "client-pages",
+        "nodeType": "flow",
+        "name": "",
+        "outputs": 4,
+        "flow": {
+            "flowId": "sd_YsyfjvggBXJgUYyR",
+            "label": "bookedEvents"
+        },
+        "relativePath": "app/components/user/bookedEvents",
+        "data": "this.page.visitorUser",
+        "ariaDescribedBy": "this.page",
+        "ariaLabel": "this.page",
+        "ariaLabelledBy": "this.page",
+        "autoFocus": "this.page",
+        "backdropClass": "this.page",
+        "closeOnNavigation": "this.page",
+        "direction": "this.page",
+        "disableClose": "this.page",
+        "hasBackdrop": "this.page",
+        "height": "this.page",
+        "maxHeight": "this.page",
+        "minHeight": "this.page",
+        "width": "this.page",
+        "maxWidth": "this.page",
+        "minWidth": "this.page",
+        "panelClass": "this.page",
+        "position": "this.page",
+        "restoreFocus": "this.page",
+        "role": "this.page",
+        "resultMapping": "this.page",
+        "functionName": "sd_w21oEOf7ryvTT1EK",
+        "category": "Dialog",
+        "x": 220,
+        "y": 400,
+        "wires": [
+            [],
+            [],
+            [],
+            []
+        ],
+        "__ssdTypeInputs__": {
+            "data": {
+                "type": "this.page",
+                "value": "visitorUser",
+                "constant": false
+            },
+            "ariaDescribedBy": {
+                "type": "this.page",
+                "value": "",
+                "constant": false
+            },
+            "ariaLabel": {
+                "type": "this.page",
+                "value": "",
+                "constant": false
+            },
+            "ariaLabelledBy": {
+                "type": "this.page",
+                "value": "",
+                "constant": false
+            },
+            "autoFocus": {
+                "type": "this.page",
+                "value": "",
+                "constant": false
+            },
+            "backdropClass": {
+                "type": "this.page",
+                "value": "",
+                "constant": false
+            },
+            "closeOnNavigation": {
+                "type": "this.page",
+                "value": "",
+                "constant": false
+            },
+            "direction": {
+                "type": "this.page",
+                "value": "",
+                "constant": false
+            },
+            "disableClose": {
+                "type": "this.page",
+                "value": "",
+                "constant": false
+            },
+            "hasBackdrop": {
+                "type": "this.page",
+                "value": "",
+                "constant": false
+            },
+            "height": {
+                "type": "this.page",
+                "value": "",
+                "constant": false
+            },
+            "maxHeight": {
+                "type": "this.page",
+                "value": "",
+                "constant": false
+            },
+            "minHeight": {
+                "type": "this.page",
+                "value": "",
+                "constant": false
+            },
+            "width": {
+                "type": "this.page",
+                "value": "",
+                "constant": false
+            },
+            "maxWidth": {
+                "type": "this.page",
+                "value": "",
+                "constant": false
+            },
+            "minWidth": {
+                "type": "this.page",
+                "value": "",
+                "constant": false
+            },
+            "panelClass": {
+                "type": "this.page",
+                "value": "",
+                "constant": false
+            },
+            "position": {
+                "type": "this.page",
+                "value": "",
+                "constant": false
+            },
+            "restoreFocus": {
+                "type": "this.page",
+                "value": "",
+                "constant": false
+            },
+            "role": {
+                "type": "this.page",
+                "value": "",
+                "constant": false
+            },
+            "resultMapping": {
+                "type": "this.page",
+                "value": "",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "mainEventPageComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_SD1AOe3rDcbTOeJH",
+        "type": "OpenDialog",
+        "z": "sd_ngbdawyitK6OcDZi",
+        "viewType": "client-pages",
+        "nodeType": "flow",
+        "name": "",
+        "outputs": 4,
+        "flow": {
+            "flowId": "sd_ViB198jSs8Z5lOrD",
+            "label": "bookEventWithPeopels"
+        },
+        "relativePath": "app/components/user/bookEventWithPeopels",
+        "data": "bh.input.bookticketValue",
+        "ariaDescribedBy": "this.page",
+        "ariaLabel": "this.page",
+        "ariaLabelledBy": "this.page",
+        "autoFocus": "this.page",
+        "backdropClass": "this.page",
+        "closeOnNavigation": "this.page",
+        "direction": "this.page",
+        "disableClose": "this.page",
+        "hasBackdrop": "this.page",
+        "height": "this.page",
+        "maxHeight": "this.page",
+        "minHeight": "this.page",
+        "width": "this.page",
+        "maxWidth": "this.page",
+        "minWidth": "this.page",
+        "panelClass": "this.page",
+        "position": "this.page",
+        "restoreFocus": "this.page",
+        "role": "this.page",
+        "resultMapping": "this.page",
+        "functionName": "sd_SD1AOe3rDcbTOeJH",
+        "category": "Dialog",
+        "x": 265,
+        "y": 320,
+        "wires": [
+            [],
+            [],
+            [],
+            [
+                "sd_yEUpysnnG94STmFA"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "data": {
+                "type": "bh",
+                "value": "input.bookticketValue",
+                "constant": false
+            },
+            "ariaDescribedBy": {
+                "type": "this.page",
+                "value": "",
+                "constant": false
+            },
+            "ariaLabel": {
+                "type": "this.page",
+                "value": "",
+                "constant": false
+            },
+            "ariaLabelledBy": {
+                "type": "this.page",
+                "value": "",
+                "constant": false
+            },
+            "autoFocus": {
+                "type": "this.page",
+                "value": "",
+                "constant": false
+            },
+            "backdropClass": {
+                "type": "this.page",
+                "value": "",
+                "constant": false
+            },
+            "closeOnNavigation": {
+                "type": "this.page",
+                "value": "",
+                "constant": false
+            },
+            "direction": {
+                "type": "this.page",
+                "value": "",
+                "constant": false
+            },
+            "disableClose": {
+                "type": "this.page",
+                "value": "",
+                "constant": false
+            },
+            "hasBackdrop": {
+                "type": "this.page",
+                "value": "",
+                "constant": false
+            },
+            "height": {
+                "type": "this.page",
+                "value": "",
+                "constant": false
+            },
+            "maxHeight": {
+                "type": "this.page",
+                "value": "",
+                "constant": false
+            },
+            "minHeight": {
+                "type": "this.page",
+                "value": "",
+                "constant": false
+            },
+            "width": {
+                "type": "this.page",
+                "value": "",
+                "constant": false
+            },
+            "maxWidth": {
+                "type": "this.page",
+                "value": "",
+                "constant": false
+            },
+            "minWidth": {
+                "type": "this.page",
+                "value": "",
+                "constant": false
+            },
+            "panelClass": {
+                "type": "this.page",
+                "value": "",
+                "constant": false
+            },
+            "position": {
+                "type": "this.page",
+                "value": "",
+                "constant": false
+            },
+            "restoreFocus": {
+                "type": "this.page",
+                "value": "",
+                "constant": false
+            },
+            "role": {
+                "type": "this.page",
+                "value": "",
+                "constant": false
+            },
+            "resultMapping": {
+                "type": "this.page",
+                "value": "",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "mainEventPageComponent",
+        "generated": true
+    }
+]

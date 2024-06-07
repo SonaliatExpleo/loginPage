@@ -1,0 +1,20 @@
+<div fxLayout="column wrap" style="background-color:rgba(15, 28, 161, 1);height:100vh;width:100vw;" fxLayoutAlign="center center" [fxShow]="true">
+  <form [formGroup]="page.formData">
+    <div fxLayout="row wrap" style="background-color:white;padding:10px;border-radius:5px;" fxLayoutGap="20px" fxLayoutAlign="start stretch" [fxShow]="true"><img imgSrc="/Web/login.jpg" alt="login-image" style="max-width:50%;height:auto;">
+      <div fxLayout="column wrap" style="text-align:center;width:40%;" fxLayoutAlign="center stretch" [fxShow]="true">
+        <div>
+          <h2>All Events</h2>
+        </div>
+        <mat-form-field [appearance]="&apos;legacy&apos;" [floatLabel]="&apos;auto&apos;" [hideRequiredMarker]="false">
+          <input matInput placeholder="Email" [required]="false" formControlName="email">
+
+        </mat-form-field>
+        <mat-form-field [appearance]="&apos;legacy&apos;" [floatLabel]="&apos;auto&apos;" [hideRequiredMarker]="false">
+          <input matInput placeholder="Password" [required]="false" formControlName="password">
+
+        </mat-form-field>
+        <div fxLayout="row wrap" style="margin:10px;" fxLayoutAlign="start stretch" [fxShow]="true"><mat-radio-group [value]="page.formData.value.role" formControlName="role" [required]="false"><mat-radio-button [value]="gen" [required]="false" *ngFor="let gen of page.role ;let i = index;" id="radio{{i}}">{{gen}}</mat-radio-button></mat-radio-group></div><button mat-raised-button style="background-color:rgba(60, 37, 201, 0.8);" (click)="onLogin()">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>

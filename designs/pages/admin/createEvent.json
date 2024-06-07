@@ -1,0 +1,285 @@
+[
+    {
+        "id": "sd_swZSKlzODTm6A0OM",
+        "type": "tab",
+        "createdDate": "2024-05-02T10:09:36.048Z",
+        "label": "createEvent",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "createEventComponent"
+    },
+    {
+        "id": "sd_AuKBtYU0oyTUSimT",
+        "type": "OnInit",
+        "z": "sd_swZSKlzODTm6A0OM",
+        "viewType": "common",
+        "nodeType": "start",
+        "name": "",
+        "functionName": "sd_AuKBtYU0oyTUSimT",
+        "category": "Lifecycle Events",
+        "x": 30,
+        "y": 30,
+        "wires": [
+            [
+                "sd_wSfoYtbBRLfO5eQ7"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "createEventComponent"
+    },
+    {
+        "id": "sd_wSfoYtbBRLfO5eQ7",
+        "type": "PageVariables",
+        "z": "sd_swZSKlzODTm6A0OM",
+        "viewType": "pages",
+        "nodeType": "flow",
+        "name": "",
+        "inputs": 1,
+        "outputs": 1,
+        "operation": "set",
+        "globalVariables": [],
+        "functionName": "sd_wSfoYtbBRLfO5eQ7",
+        "category": "Function",
+        "x": 185,
+        "y": 40,
+        "wires": [
+            [
+                "sd_UFoOwbFw7h7iRWSW"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "createEventComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_UFoOwbFw7h7iRWSW",
+        "type": "UseDependency",
+        "z": "sd_swZSKlzODTm6A0OM",
+        "viewType": "client-pages",
+        "nodeType": "flow",
+        "name": "",
+        "inputs": 1,
+        "outputs": 1,
+        "property": "",
+        "propertyType": "bh",
+        "propertyGv": "bh.",
+        "alias": "",
+        "modules": [
+            {
+                "textIp": "FormControl",
+                "typedIpValue": {
+                    "type": "this.page",
+                    "value": ""
+                },
+                "injectable": false
+            },
+            {
+                "textIp": "FormGroup",
+                "typedIpValue": {
+                    "type": "this.page",
+                    "value": ""
+                },
+                "injectable": false
+            },
+            {
+                "textIp": "Validators",
+                "typedIpValue": {
+                    "type": "this.page",
+                    "value": ""
+                },
+                "injectable": false
+            }
+        ],
+        "import_all": false,
+        "library": "@angular/forms",
+        "serviceDesignerType": "pages",
+        "functionName": "sd_UFoOwbFw7h7iRWSW",
+        "category": "Function",
+        "x": 305,
+        "y": 60,
+        "wires": [
+            [
+                "sd_oM9Ye6u19aQTSoft"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "createEventComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_oM9Ye6u19aQTSoft",
+        "type": "Script",
+        "z": "sd_swZSKlzODTm6A0OM",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "page.eventForm = new FormGroup({\n    eventName:new FormControl('', { validators: [Validators.required] }),\n    location:new FormControl('', { validators: [Validators.required] }),\n    date:new FormControl('', { validators: [Validators.required] }),\n    description:new FormControl('', { validators: [Validators.required] })\n})\n\n\n",
+        "functionName": "sd_oM9Ye6u19aQTSoft",
+        "category": "Function",
+        "x": 440,
+        "y": 60,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "createEventComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_LPG1lIOuxNfUCkZT",
+        "type": "PageStart",
+        "z": "sd_swZSKlzODTm6A0OM",
+        "viewType": "pages",
+        "nodeType": "start",
+        "name": "onCreateEvent",
+        "outputs": 1,
+        "inputVariables": [],
+        "localVariables": [],
+        "flow_type": "sync",
+        "functionName": "onCreateEvent",
+        "category": "General",
+        "x": 85,
+        "y": 200,
+        "wires": [
+            [
+                "sd_488t5qnrt6xgVC4M"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "createEventComponent"
+    },
+    {
+        "id": "sd_DDXJxfuH9jT92cQv",
+        "type": "Script",
+        "z": "sd_swZSKlzODTm6A0OM",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "\npage.user = JSON.parse(localStorage.getItem('user'));\npage.admin = JSON.parse(localStorage.getItem('admin'));\n\nconsole.log(page.eventForm.value,'eventForm')\nconsole.log(page.user,\"user\")\nconsole.log(page.admin,\"admin\")\npage.admin.forEach((adminItem) => {\n    console.log('inside funcion')\n    if (page.user.email === adminItem.email) {\n        adminItem.events.push({...page.eventForm.value,\n        bookeBy:[]})\n        console.log('inside if')\n    }\n    \n});\nlocalStorage.setItem('admin', JSON.stringify(page.admin));\n\n\n\n\n",
+        "functionName": "sd_DDXJxfuH9jT92cQv",
+        "category": "Function",
+        "x": 365,
+        "y": 180,
+        "wires": [
+            [
+                "sd_fC97n5yojl4nozD0"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "createEventComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_488t5qnrt6xgVC4M",
+        "type": "PageSwitch",
+        "z": "sd_swZSKlzODTm6A0OM",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "property": "eventForm.valid",
+        "propertyType": "this.page",
+        "propertyGv": "this.page.eventForm.valid",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "functionName": "sd_488t5qnrt6xgVC4M",
+        "category": "Function",
+        "x": 185,
+        "y": 200,
+        "wires": [
+            [
+                "sd_DDXJxfuH9jT92cQv"
+            ],
+            [
+                "sd_J2tNtZdgM95Hv4mL"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "createEventComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_J2tNtZdgM95Hv4mL",
+        "type": "SnackBar",
+        "z": "sd_swZSKlzODTm6A0OM",
+        "viewType": "client-pages",
+        "nodeType": "flow",
+        "name": "",
+        "message": {
+            "type": "str",
+            "value": "Enter valid details"
+        },
+        "action": {
+            "type": "str",
+            "value": ""
+        },
+        "duration": {
+            "type": "num",
+            "value": ""
+        },
+        "horizontalPosition": "center",
+        "horizontalPositionMap": "",
+        "verticalPosition": "bottom",
+        "verticalPositionMap": "",
+        "panelClass": {
+            "type": "str",
+            "value": ""
+        },
+        "direction": "ltr",
+        "functionName": "sd_J2tNtZdgM95Hv4mL",
+        "category": "General",
+        "x": 320,
+        "y": 300,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "createEventComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_fC97n5yojl4nozD0",
+        "type": "Navigation",
+        "z": "sd_swZSKlzODTm6A0OM",
+        "viewType": "client-pages",
+        "nodeType": "flow",
+        "name": "",
+        "path": "/admin",
+        "pathMap": "",
+        "pathparams": "",
+        "pathparamsMap": "",
+        "qparams": "",
+        "qparamsMap": "",
+        "qparamsArray": "",
+        "resultMapping": "",
+        "functionName": "sd_fC97n5yojl4nozD0",
+        "category": "Navigation",
+        "x": 540,
+        "y": 200,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "createEventComponent",
+        "generated": true
+    }
+]

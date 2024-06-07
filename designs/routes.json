@@ -1,0 +1,30 @@
+{
+    "routes": [
+        {
+            "path": "login",
+            "component": "loginComponent"
+        },
+        {
+            "path": "admin",
+            "component": "adminhomeComponent"
+        },
+        {
+            "path": "createevent",
+            "component": "createEventComponent"
+        },
+        {
+            "path": "mainhome",
+            "component": "mainEventPageComponent"
+        },
+        {
+            "path": "''",
+            "redirectTo": "login",
+            "pathMatch": "full",
+            "default": true
+        },
+        {
+            "path": "**",
+            "component": "PageNotFoundComponent"
+        }
+    ]
+}

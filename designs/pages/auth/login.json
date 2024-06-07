@@ -1,0 +1,395 @@
+[
+    {
+        "id": "sd_WWpyUl6A9p7B3IdV",
+        "type": "tab",
+        "createdDate": "2024-05-02T03:37:40.123Z",
+        "label": "login",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "loginComponent"
+    },
+    {
+        "id": "sd_9t9INRzmQByxrZPv",
+        "type": "OnInit",
+        "z": "sd_WWpyUl6A9p7B3IdV",
+        "viewType": "common",
+        "nodeType": "start",
+        "name": "",
+        "functionName": "sd_9t9INRzmQByxrZPv",
+        "category": "Lifecycle Events",
+        "x": 25,
+        "y": 40,
+        "wires": [
+            [
+                "sd_gOWr9ItM0qm9mRDa"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "loginComponent"
+    },
+    {
+        "id": "sd_gOWr9ItM0qm9mRDa",
+        "type": "PageVariables",
+        "z": "sd_WWpyUl6A9p7B3IdV",
+        "viewType": "pages",
+        "nodeType": "flow",
+        "name": "",
+        "inputs": 1,
+        "outputs": 1,
+        "operation": "set",
+        "globalVariables": [],
+        "functionName": "sd_gOWr9ItM0qm9mRDa",
+        "category": "Function",
+        "x": 125,
+        "y": 40,
+        "wires": [
+            [
+                "sd_MrI3OWXeQlBoB2Uj"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "loginComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_oi74dOS2oMCJVwa7",
+        "type": "Script",
+        "z": "sd_WWpyUl6A9p7B3IdV",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "page.role = ['admin', 'user']\n\npage.formData = new FormGroup({\n  email: new FormControl(\"\", { validators: [Validators.required, Validators.email] }),\n  password: new FormControl('', { validators: [Validators.required] }),\n  role: new FormControl(''),\n});",
+        "functionName": "sd_oi74dOS2oMCJVwa7",
+        "category": "Function",
+        "x": 345,
+        "y": 40,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "loginComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_MrI3OWXeQlBoB2Uj",
+        "type": "UseDependency",
+        "z": "sd_WWpyUl6A9p7B3IdV",
+        "viewType": "client-pages",
+        "nodeType": "flow",
+        "name": "",
+        "inputs": 1,
+        "outputs": 1,
+        "property": "",
+        "propertyType": "bh",
+        "propertyGv": "bh.",
+        "alias": "",
+        "modules": [
+            {
+                "textIp": "FormGroup",
+                "typedIpValue": {
+                    "type": "this.page",
+                    "value": ""
+                },
+                "injectable": false
+            },
+            {
+                "textIp": "FormControl",
+                "typedIpValue": {
+                    "type": "this.page",
+                    "value": ""
+                },
+                "injectable": false
+            },
+            {
+                "textIp": "Validators",
+                "typedIpValue": {
+                    "type": "this.page",
+                    "value": ""
+                },
+                "injectable": false
+            }
+        ],
+        "import_all": false,
+        "library": "@angular/forms",
+        "serviceDesignerType": "pages",
+        "functionName": "sd_MrI3OWXeQlBoB2Uj",
+        "category": "Function",
+        "x": 225,
+        "y": 40,
+        "wires": [
+            [
+                "sd_oi74dOS2oMCJVwa7"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "loginComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_O8tdBbDey73jLCSL",
+        "type": "PageStart",
+        "z": "sd_WWpyUl6A9p7B3IdV",
+        "viewType": "pages",
+        "nodeType": "start",
+        "name": "onLogin",
+        "outputs": 1,
+        "inputVariables": [],
+        "localVariables": [],
+        "flow_type": "sync",
+        "functionName": "onLogin",
+        "category": "General",
+        "x": 45,
+        "y": 160,
+        "wires": [
+            [
+                "sd_auJzayrpu6nBSMgf"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "loginComponent"
+    },
+    {
+        "id": "sd_srFoclrWRYo2Jxgs",
+        "type": "Script",
+        "z": "sd_WWpyUl6A9p7B3IdV",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "\n\nlet adminData =JSON.parse( localStorage.getItem('admin'));\n\nif (!adminData) {\n     adminData = [];\n}\n\nconst isAdminExists = adminData.some(adminItem => {\n    return adminItem.username === page.formData.username;\n});\nif(!isAdminExists){\nadminData.push({ ...page.formData.value, events: [] });\n}\n\n\n\nlocalStorage.setItem('admin', JSON.stringify(adminData));\nlocalStorage.setItem('user',JSON.stringify(page.formData.value))\n",
+        "functionName": "sd_srFoclrWRYo2Jxgs",
+        "category": "Function",
+        "x": 425,
+        "y": 140,
+        "wires": [
+            [
+                "sd_DpdjEjGY6x4rTuMI"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "loginComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_DpdjEjGY6x4rTuMI",
+        "type": "Navigation",
+        "z": "sd_WWpyUl6A9p7B3IdV",
+        "viewType": "client-pages",
+        "nodeType": "flow",
+        "name": "",
+        "path": "/admin",
+        "pathMap": "",
+        "pathparams": "",
+        "pathparamsMap": "",
+        "qparams": "",
+        "qparamsMap": "",
+        "qparamsArray": "",
+        "resultMapping": "",
+        "functionName": "sd_DpdjEjGY6x4rTuMI",
+        "category": "Navigation",
+        "x": 525,
+        "y": 120,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "loginComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_auJzayrpu6nBSMgf",
+        "type": "PageSwitch",
+        "z": "sd_WWpyUl6A9p7B3IdV",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "property": "formData.valid",
+        "propertyType": "this.page",
+        "propertyGv": "this.page.formData.valid",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "functionName": "sd_auJzayrpu6nBSMgf",
+        "category": "Function",
+        "x": 105,
+        "y": 240,
+        "wires": [
+            [
+                "sd_nEgA8CNCdnBB7CTn"
+            ],
+            [
+                "sd_a0JOooZHEGlJkZiV"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "loginComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_a0JOooZHEGlJkZiV",
+        "type": "SnackBar",
+        "z": "sd_WWpyUl6A9p7B3IdV",
+        "viewType": "client-pages",
+        "nodeType": "flow",
+        "name": "",
+        "message": {
+            "type": "str",
+            "value": ""
+        },
+        "action": {
+            "type": "str",
+            "value": "Enter Credentials"
+        },
+        "duration": {
+            "type": "num",
+            "value": ""
+        },
+        "horizontalPosition": "center",
+        "verticalPosition": "bottom",
+        "panelClass": {
+            "type": "str",
+            "value": ""
+        },
+        "direction": "ltr",
+        "functionName": "sd_a0JOooZHEGlJkZiV",
+        "category": "General",
+        "x": 265,
+        "y": 340,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "loginComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_OTiu9utO5HE9itg7",
+        "type": "Script",
+        "z": "sd_WWpyUl6A9p7B3IdV",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "console.log(page.formData.value.role)\n\n\n\n\nlet previousUserData =JSON.parse( localStorage.getItem('allUserDetail'));\n\nif (!previousUserData) {\n     previousUserData = [];\n}\n\nconst isAdminExists = previousUserData.some(adminItem => {\n    return adminItem.username === page.formData.username;\n});\nif(!isAdminExists){\npreviousUserData.push({ ...page.formData.value, bookedEvents: [] });\n}\n\n\n\nlocalStorage.setItem('allUserDetail', JSON.stringify(previousUserData));\n\nlocalStorage.setItem('visitorUser', JSON.stringify(page.formData.value))",
+        "functionName": "sd_OTiu9utO5HE9itg7",
+        "category": "Function",
+        "x": 460,
+        "y": 260,
+        "wires": [
+            [
+                "sd_QtjdAVOLDhT0UMei"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "loginComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_nEgA8CNCdnBB7CTn",
+        "type": "Script",
+        "z": "sd_WWpyUl6A9p7B3IdV",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "console.log(page.formData.value)",
+        "functionName": "sd_nEgA8CNCdnBB7CTn",
+        "category": "Function",
+        "x": 220,
+        "y": 220,
+        "wires": [
+            [
+                "sd_3t5zODEcHzEUzJJc"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "loginComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_3t5zODEcHzEUzJJc",
+        "type": "PageSwitch",
+        "z": "sd_WWpyUl6A9p7B3IdV",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "property": "formData.value.role",
+        "propertyType": "this.page",
+        "propertyGv": "this.page.formData.value.role",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "admin",
+                "vt": "str",
+                "gv": "\"admin\""
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "functionName": "sd_3t5zODEcHzEUzJJc",
+        "category": "Function",
+        "x": 325,
+        "y": 160,
+        "wires": [
+            [
+                "sd_srFoclrWRYo2Jxgs"
+            ],
+            [
+                "sd_OTiu9utO5HE9itg7"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "loginComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_QtjdAVOLDhT0UMei",
+        "type": "Navigation",
+        "z": "sd_WWpyUl6A9p7B3IdV",
+        "viewType": "client-pages",
+        "nodeType": "flow",
+        "name": "",
+        "path": "/mainhome",
+        "pathMap": "",
+        "pathparams": "",
+        "pathparamsMap": "",
+        "qparams": "",
+        "qparamsMap": "",
+        "qparamsArray": "",
+        "resultMapping": "",
+        "functionName": "sd_QtjdAVOLDhT0UMei",
+        "category": "Navigation",
+        "x": 580,
+        "y": 280,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "loginComponent",
+        "generated": true
+    }
+]

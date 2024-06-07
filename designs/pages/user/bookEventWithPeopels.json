@@ -1,0 +1,289 @@
+[
+    {
+        "id": "sd_ViB198jSs8Z5lOrD",
+        "type": "tab",
+        "createdDate": "2024-05-03T09:48:42.666Z",
+        "label": "bookEventWithPeopels",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "bookEventWithPeopelsComponent"
+    },
+    {
+        "id": "sd_Q8f6Z8Lnb010SCEN",
+        "type": "OnInit",
+        "z": "sd_ViB198jSs8Z5lOrD",
+        "viewType": "common",
+        "nodeType": "start",
+        "name": "",
+        "functionName": "sd_Q8f6Z8Lnb010SCEN",
+        "category": "Lifecycle Events",
+        "x": 30,
+        "y": 30,
+        "wires": [
+            [
+                "sd_pYBnSaipmiAGQDwG"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "bookEventWithPeopelsComponent"
+    },
+    {
+        "id": "sd_RqnNwjCJcnqJLbDT",
+        "type": "PageVariables",
+        "z": "sd_ViB198jSs8Z5lOrD",
+        "viewType": "pages",
+        "nodeType": "flow",
+        "name": "",
+        "inputs": 1,
+        "outputs": 1,
+        "operation": "set",
+        "globalVariables": [],
+        "functionName": "sd_RqnNwjCJcnqJLbDT",
+        "category": "Function",
+        "x": 285,
+        "y": 60,
+        "wires": [
+            [
+                "sd_KDeWBN57RyF4DjQ8"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "bookEventWithPeopelsComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_pYBnSaipmiAGQDwG",
+        "type": "GetDialogData",
+        "z": "sd_ViB198jSs8Z5lOrD",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "dialogDataMapping": "this.page.ticketValue",
+        "functionName": "sd_pYBnSaipmiAGQDwG",
+        "category": "Dialog",
+        "x": 125,
+        "y": 120,
+        "wires": [
+            [
+                "sd_844c5amgYVcdRjHE"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "dialogDataMapping": {
+                "type": "this.page",
+                "value": "ticketValue",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "bookEventWithPeopelsComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_KDeWBN57RyF4DjQ8",
+        "type": "Script",
+        "z": "sd_ViB198jSs8Z5lOrD",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "page.visitorUser = JSON.parse(localStorage.getItem('visitorUser'))\n\npage.member=[]\n\npage.addEventForm = new FormGroup({\n    userName:new FormControl(page.visitorUser.email),\n    multiUser: new FormControl('')\n})\n",
+        "functionName": "sd_KDeWBN57RyF4DjQ8",
+        "category": "Function",
+        "x": 380,
+        "y": 60,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "bookEventWithPeopelsComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_844c5amgYVcdRjHE",
+        "type": "UseDependency",
+        "z": "sd_ViB198jSs8Z5lOrD",
+        "viewType": "client-pages",
+        "nodeType": "flow",
+        "name": "",
+        "inputs": 1,
+        "outputs": 1,
+        "property": "",
+        "propertyType": "bh",
+        "propertyGv": "bh.",
+        "alias": "",
+        "modules": [
+            {
+                "textIp": "FormControl",
+                "typedIpValue": {
+                    "type": "this.page",
+                    "value": ""
+                },
+                "injectable": false
+            },
+            {
+                "textIp": "Validators",
+                "typedIpValue": {
+                    "type": "this.page",
+                    "value": ""
+                },
+                "injectable": false
+            },
+            {
+                "textIp": "FormGroup",
+                "typedIpValue": {
+                    "type": "this.page",
+                    "value": ""
+                },
+                "injectable": false
+            }
+        ],
+        "import_all": false,
+        "library": "@angular/forms",
+        "serviceDesignerType": "pages",
+        "functionName": "sd_844c5amgYVcdRjHE",
+        "category": "Function",
+        "x": 205,
+        "y": 80,
+        "wires": [
+            [
+                "sd_RqnNwjCJcnqJLbDT"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "bookEventWithPeopelsComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_w1xrl8kUc6gy3LlI",
+        "type": "PageStart",
+        "z": "sd_ViB198jSs8Z5lOrD",
+        "viewType": "pages",
+        "nodeType": "start",
+        "name": "BookTicketWithGuests",
+        "outputs": 1,
+        "inputVariables": [],
+        "localVariables": [],
+        "flow_type": "sync",
+        "functionName": "bookTicketWithGuests",
+        "category": "General",
+        "x": 85,
+        "y": 300,
+        "wires": [
+            [
+                "sd_rJ7xFYDqR4w3CP5g"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "bookEventWithPeopelsComponent"
+    },
+    {
+        "id": "sd_rJ7xFYDqR4w3CP5g",
+        "type": "Script",
+        "z": "sd_ViB198jSs8Z5lOrD",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "console.log(page.ticketValue);\n\nlet data = JSON.parse(localStorage.getItem('admin'));\nconsole.log(data);\n\n\nif (data) {\n    data.forEach(admin => {\n        admin.events.forEach(event => {\n            if (event.eventName === page.ticketValue.eventName) {\n                // console.log(event.bookeBy,'booked by')\n                page.member.forEach((valuess) => {\n                    if (event.bookeBy.includes(valuess)) {\n                        console.log('User already booked the event');\n                    } else {\n                        event.bookeBy.push(valuess);\n                        console.log('User booked the event successfully');\n                    }\n                })\n\n\n            }\n        });\n    });\n    localStorage.setItem('admin', JSON.stringify(data));\n    console.log(data);\n} else {\n    console.log(\"No data found in localStorage\");\n}\n\nlocalStorage.setItem('admin', JSON.stringify(data))\n",
+        "functionName": "sd_rJ7xFYDqR4w3CP5g",
+        "category": "Function",
+        "x": 220,
+        "y": 280,
+        "wires": [
+            [
+                "sd_5fZHNKWTR2GRUzDE"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "bookEventWithPeopelsComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_POcKVCWEMqQ279Vn",
+        "type": "PageStart",
+        "z": "sd_ViB198jSs8Z5lOrD",
+        "viewType": "pages",
+        "nodeType": "start",
+        "name": "addUser",
+        "outputs": 1,
+        "inputVariables": [
+            {
+                "key": "value",
+                "defaultValue": {
+                    "type": "any",
+                    "value": ""
+                },
+                "output": false
+            }
+        ],
+        "localVariables": [],
+        "flow_type": "sync",
+        "functionName": "addUser",
+        "category": "General",
+        "x": 80,
+        "y": 200,
+        "wires": [
+            [
+                "sd_j2eOm3npVGehIfne"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "bookEventWithPeopelsComponent"
+    },
+    {
+        "id": "sd_j2eOm3npVGehIfne",
+        "type": "Script",
+        "z": "sd_ViB198jSs8Z5lOrD",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "// console.log(bh.input.value)\n// page.member.push(bh.input.value)\n\n// console.log(page.member)\n// page.value=''\npage.member.push(page.addEventForm.value.multiUser);\nconsole.log(page.member)\npage.addEventForm.value.multiUser =\"\" ;",
+        "functionName": "sd_j2eOm3npVGehIfne",
+        "category": "Function",
+        "x": 180,
+        "y": 200,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "bookEventWithPeopelsComponent",
+        "generated": true
+    },
+    {
+        "id": "sd_5fZHNKWTR2GRUzDE",
+        "type": "CloseDialog",
+        "z": "sd_ViB198jSs8Z5lOrD",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "data": "this.page.visitorUser",
+        "functionName": "sd_5fZHNKWTR2GRUzDE",
+        "category": "Dialog",
+        "x": 320,
+        "y": 280,
+        "wires": [
+            []
+        ],
+        "__ssdTypeInputs__": {
+            "data": {
+                "type": "this.page",
+                "value": "visitorUser",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "bookEventWithPeopelsComponent",
+        "generated": true
+    }
+]

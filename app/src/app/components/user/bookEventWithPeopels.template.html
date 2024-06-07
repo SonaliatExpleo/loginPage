@@ -1,0 +1,13 @@
+<form>
+  <div fxLayout="column wrap" style="margin:1px solid black;padding:2rem; backgroundColor:rgba(245, 199, 223, 0.8);" fxLayoutGap="40px" fxLayoutAlign="start stretch" [fxShow]="true" [formGroup]="page.addEventForm">
+    <mat-form-field [appearance]="&apos;legacy&apos;" [floatLabel]="&apos;auto&apos;" [hideRequiredMarker]="false">
+      <input matInput placeholder="Add user details" [required]="false" formControlName="multiUser">
+
+    </mat-form-field><button mat-raised-button (click)="addUser()">Add Person</button>
+    <div fxLayout="column wrap" fxLayoutAlign="start stretch" [fxShow]="true">
+      <div *ngFor="let value of page.member;">
+        <h3>{{value}}</h3>
+      </div>
+    </div><button mat-raised-button (click)="bookTicketWithGuests()">BookTicket</button>
+  </div>
+</form>
